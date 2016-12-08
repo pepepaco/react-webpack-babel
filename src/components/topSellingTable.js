@@ -131,9 +131,15 @@ class AllFeaturesTable extends React.Component {
       columns, rows, pagination, sortingColumns
     } = this.state;
     const cols = columns.filter(column => column.visible);
-
+   
+    //trying to change sort order by updating the state directly:
    this.state.sortingColumns=this.props.sortBy;  
-    console.log(this.props.sortBy);
+    //this property has the correct value
+    console.log("this.state.sortingColumns="+this.state.sortingColumns);
+    //this property lag by one click
+    console.log("sortingColumns="+sortingColumns);
+
+
     const sortedRows = compose(
       sort.sorter({ columns: cols, sortingColumns, sort: orderBy })
     )(rows);
